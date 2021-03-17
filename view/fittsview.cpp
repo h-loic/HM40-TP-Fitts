@@ -133,15 +133,16 @@ void FittsView::initWindows() {
     settingsLayout->addLayout(btnLayout);
 
     leaveBtn = new QPushButton("Quitter");
+    leaveBtn->setStyleSheet("display:inline-block;padding:0.3em 1.2em;margin:0 0.3em 0.3em 0;border-radius:2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;transition: all 0.2s;");
     btnLayout->addWidget(leaveBtn);
 
     startBtn = new QPushButton("Démarrer");
+    startBtn->setStyleSheet("display:inline-block;padding:0.3em 1.2em;margin:0 0.3em 0.3em 0;border-radius:2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;transition: all 0.2s;");
     btnLayout->addWidget(startBtn);
 
 
 
     // Test part
-
     QWidget *testWidget = new QWidget;
     mainStack->addWidget(testWidget);
 
