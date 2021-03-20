@@ -51,7 +51,7 @@ FittsView::~FittsView() {}
 void FittsView::initWindows() {
 
     QWidget *mainWidget = new QWidget;
-    mainWidget->setStyleSheet("background-color:white;");
+    mainWidget->setStyleSheet("background-color:#F6F6F6;");
     this->setCentralWidget(mainWidget);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -73,8 +73,8 @@ void FittsView::initWindows() {
     settingsLayout->addWidget(label);
 
 
-    QGroupBox *rappelBox = new QGroupBox("Rappel :");
-    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border: 1px solid #FF17365D;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 5px 8000px 5px 8000px;background-color: #FF17365D;color: rgb(255, 255, 255);}");
+    QGroupBox *rappelBox = new QGroupBox("Rappel");
+    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(rappelBox);
     QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
 
@@ -87,25 +87,33 @@ void FittsView::initWindows() {
 
     label = new QLabel;
     label->setPixmap(QPixmap("./data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
+    label->setStyleSheet("background-color:white");
     rappelLeftLayout->addWidget(label);
 
     QGridLayout *rappelRightLayout = new QGridLayout();
     rappelLayout->addLayout(rappelRightLayout,1);
 
     label = new QLabel("Choix de a et b");
+    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
     rappelRightLayout->addWidget(label,0,0,1,2);
 
-    rappelRightLayout->addWidget(new QLabel("Variable a "),1,0);
-    rappelRightLayout->addWidget(new QLabel("Variable b "),2,0);
+    label = new QLabel("Variable a ");
+    label->setStyleSheet("background-color:white");
+    rappelRightLayout->addWidget(label,1,0);
+    label = new QLabel("Variable b ");
+    label->setStyleSheet("background-color:white");
+    rappelRightLayout->addWidget(label,2,0);
 
     aValue = new QDoubleSpinBox;
     aValue->setValue(this->fittsModel->a);
     rappelRightLayout->addWidget(aValue,1,1);
+    aValue->setStyleSheet("background-color:white;");
 
 
     bValue = new QDoubleSpinBox;
     bValue->setValue(this->fittsModel->b);
     rappelRightLayout->addWidget(bValue,2,1);
+    bValue->setStyleSheet("background-color:white;");
 
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
@@ -135,11 +143,11 @@ void FittsView::initWindows() {
     QHBoxLayout *btnLayout = new QHBoxLayout;
     settingsLayout->addLayout(btnLayout);
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;transition: all 0.2s;");
+    leaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;");
     btnLayout->addWidget(leaveBtn);
 
     startBtn = new QPushButton("Démarrer");
-    startBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;transition: all 0.2s;");
+    startBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;");
     btnLayout->addWidget(startBtn);
 
 
