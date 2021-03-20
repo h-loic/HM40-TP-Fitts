@@ -102,74 +102,44 @@ void FittsView::initWindows() {
     aValue = new QDoubleSpinBox;
     aValue->setValue(this->fittsModel->a);
     rappelLayout->addWidget(aValue,3,1);
-    aValue->setStyleSheet("background-color:white;");
-
+    aValue->setStyleSheet("background-color:white;padding : 1em");
 
     bValue = new QDoubleSpinBox;
     bValue->setValue(this->fittsModel->b);
     rappelLayout->addWidget(bValue,4,1);
-    bValue->setStyleSheet("background-color:white;");
-    /*
-
-    QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
-    rappelLayout->addLayout(rappelLeftLayout,2);
-
-    label = new QLabel("Formule utilisée:");
-    label->setStyleSheet("background-color:white");
-    rappelLeftLayout->addWidget(label);
-
-    label = new QLabel;
-    label->setPixmap(QPixmap("./data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
-    label->setStyleSheet("background-color:white");
-    rappelLeftLayout->addWidget(label);
-
-    QGridLayout *rappelRightLayout = new QGridLayout();
-    rappelLayout->addLayout(rappelRightLayout,1);
-
-    label = new QLabel("Choix de a et b");
-    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
-    rappelRightLayout->addWidget(label,0,0,1,2);
-
-    label = new QLabel("Variable a ");
-    label->setStyleSheet("background-color:white");
-    rappelRightLayout->addWidget(label,1,0);
-    label = new QLabel("Variable b ");
-    label->setStyleSheet("background-color:white");
-    rappelRightLayout->addWidget(label,2,0);
-
-    aValue = new QDoubleSpinBox;
-    aValue->setValue(this->fittsModel->a);
-    rappelRightLayout->addWidget(aValue,1,1);
-    aValue->setStyleSheet("background-color:white;");
-
-
-    bValue = new QDoubleSpinBox;
-    bValue->setValue(this->fittsModel->b);
-    rappelRightLayout->addWidget(bValue,2,1);
-    bValue->setStyleSheet("background-color:white;");
-*/
+    bValue->setStyleSheet("background-color:white;padding : 1em");
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
+    configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
 
-    configLayout->addWidget(new QLabel("Nombre de cibles:"),1,0);
-    configLayout->addWidget(new QLabel("Taille minimum cible:"),2,0);
-    configLayout->addWidget(new QLabel("Taille maximal cible:"),3,0);
+    label = new QLabel("Nombre de cibles:");
+    label->setStyleSheet("background-color:white");
+    configLayout->addWidget(label,1,0);
+    label = new QLabel("Taille minimum cible:");
+    label->setStyleSheet("background-color:white");
+    configLayout->addWidget(label,2,0);
+    label = new QLabel("Taille maximal cible:");
+    label->setStyleSheet("background-color:white");
+    configLayout->addWidget(label,3,0);
 
     nbCible = new QSpinBox;
     nbCible->setValue(this->fittsModel->nbCible);
     nbCible->setMaximum(100);
+    nbCible->setStyleSheet("background-color:white;padding : 1em");
     configLayout->addWidget(nbCible,1,1);
 
     minSize = new QSpinBox;
     minSize->setMaximum(1000);
     minSize->setValue(this->fittsModel->minSize);
+    minSize->setStyleSheet("background-color:white;padding : 1em");
     configLayout->addWidget(minSize,2,1);
 
     maxSize = new QSpinBox;
     maxSize->setMaximum(1000);
     maxSize->setValue(this->fittsModel->maxSize);
+    maxSize->setStyleSheet("background-color:white;padding : 1em");
     configLayout->addWidget(maxSize,3,1);
 
 
