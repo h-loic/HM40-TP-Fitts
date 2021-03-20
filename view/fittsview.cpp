@@ -131,15 +131,13 @@ void FittsView::initWindows() {
 
     QHBoxLayout *btnLayout = new QHBoxLayout;
     settingsLayout->addLayout(btnLayout);
-
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setStyleSheet("display:inline-block;padding:0.3em 1.2em;margin:0 0.3em 0.3em 0;border-radius:2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;transition: all 0.2s;");
+    leaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.8em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;transition: all 0.2s;");
     btnLayout->addWidget(leaveBtn);
 
     startBtn = new QPushButton("Démarrer");
-    startBtn->setStyleSheet("display:inline-block;padding:0.3em 1.2em;margin:0 0.3em 0.3em 0;border-radius:2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;transition: all 0.2s;");
+    startBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.8em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;transition: all 0.2s;");
     btnLayout->addWidget(startBtn);
-
 
 
     // Test part
