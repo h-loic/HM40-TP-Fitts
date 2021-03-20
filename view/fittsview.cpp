@@ -76,7 +76,40 @@ void FittsView::initWindows() {
     QGroupBox *rappelBox = new QGroupBox("Rappel");
     rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(rappelBox);
-    QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
+    QGridLayout *rappelLayout = new QGridLayout(rappelBox);
+
+    label = new QLabel("Formule utilisée:");
+    label->setStyleSheet("background-color:white");
+    label->setStyleSheet("background-color:white");
+    rappelLayout->addWidget(label,1,0);
+
+    label = new QLabel;
+    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
+    label->setPixmap(QPixmap("C:/Users/hloic/Documents/UTBM/HM40/HM40-TP-Fitts/data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
+    rappelLayout->addWidget(label,1,1);
+
+    label = new QLabel("Choix de a et b");
+    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
+    rappelLayout->addWidget(label,2,1);
+
+    label = new QLabel("Variable a ");
+    label->setStyleSheet("background-color:white");
+    rappelLayout->addWidget(label,3,0);
+    label = new QLabel("Variable b ");
+    label->setStyleSheet("background-color:white");
+    rappelLayout->addWidget(label,4,0);
+
+    aValue = new QDoubleSpinBox;
+    aValue->setValue(this->fittsModel->a);
+    rappelLayout->addWidget(aValue,3,1);
+    aValue->setStyleSheet("background-color:white;");
+
+
+    bValue = new QDoubleSpinBox;
+    bValue->setValue(this->fittsModel->b);
+    rappelLayout->addWidget(bValue,4,1);
+    bValue->setStyleSheet("background-color:white;");
+    /*
 
     QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
     rappelLayout->addLayout(rappelLeftLayout,2);
@@ -114,7 +147,7 @@ void FittsView::initWindows() {
     bValue->setValue(this->fittsModel->b);
     rappelRightLayout->addWidget(bValue,2,1);
     bValue->setStyleSheet("background-color:white;");
-
+*/
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
     settingsLayout->addWidget(configBox);
