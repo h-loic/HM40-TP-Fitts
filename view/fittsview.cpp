@@ -51,6 +51,7 @@ FittsView::~FittsView() {}
 void FittsView::initWindows() {
 
     QWidget *mainWidget = new QWidget;
+    mainWidget->setStyleSheet("background-color:white;");
     this->setCentralWidget(mainWidget);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -73,6 +74,7 @@ void FittsView::initWindows() {
 
 
     QGroupBox *rappelBox = new QGroupBox("Rappel :");
+    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border: 1px solid #FF17365D;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 5px 8000px 5px 8000px;background-color: #FF17365D;color: rgb(255, 255, 255);}");
     settingsLayout->addWidget(rappelBox);
     QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
 
@@ -80,6 +82,7 @@ void FittsView::initWindows() {
     rappelLayout->addLayout(rappelLeftLayout,2);
 
     label = new QLabel("Formule utilisée:");
+    label->setStyleSheet("background-color:white");
     rappelLeftLayout->addWidget(label);
 
     label = new QLabel;
@@ -132,11 +135,11 @@ void FittsView::initWindows() {
     QHBoxLayout *btnLayout = new QHBoxLayout;
     settingsLayout->addLayout(btnLayout);
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.8em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;transition: all 0.2s;");
+    leaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;transition: all 0.2s;");
     btnLayout->addWidget(leaveBtn);
 
     startBtn = new QPushButton("Démarrer");
-    startBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.8em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;transition: all 0.2s;");
+    startBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;transition: all 0.2s;");
     btnLayout->addWidget(startBtn);
 
 
