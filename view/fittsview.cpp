@@ -51,7 +51,7 @@ FittsView::~FittsView() {}
 void FittsView::initWindows() {
 
     QWidget *mainWidget = new QWidget;
-    mainWidget->setStyleSheet("background-color:#F6F6F6;");
+    mainWidget->setStyleSheet("background-color:#1B4F72;");
     this->setCentralWidget(mainWidget);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -68,6 +68,7 @@ void FittsView::initWindows() {
     QLabel *label;
 
     label = new QLabel("Programme pour vérifier la loi Fitts");
+    label->setStyleSheet("color:white");
     label->setAlignment(Qt::AlignCenter);
     label->setFont(QFont("Arial",20));
     settingsLayout->addWidget(label);
@@ -164,6 +165,7 @@ void FittsView::initWindows() {
 
     // Test part
     QWidget *testWidget = new QWidget;
+    testWidget->setStyleSheet("background-color:white");
     mainStack->addWidget(testWidget);
 
     QVBoxLayout *testLayout = new QVBoxLayout(testWidget);
