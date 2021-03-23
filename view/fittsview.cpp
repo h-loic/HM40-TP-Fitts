@@ -146,10 +146,18 @@ void FittsView::initWindows() {
     QHBoxLayout *btnLayout = new QHBoxLayout;
     settingsLayout->addLayout(btnLayout);
     leaveBtn = new QPushButton("Quitter");
+    QPixmap pixmap("C:/Users/hloic/Documents/UTBM/HM40/HM40-TP-Fitts/data/quit.png");
+    QIcon ButtonIcon(pixmap);
+    leaveBtn->setIcon(ButtonIcon);
+    leaveBtn->setIconSize(leaveBtn->size()/15);
     leaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;");
     btnLayout->addWidget(leaveBtn);
 
     startBtn = new QPushButton("Démarrer");
+    QPixmap pixmap2("C:/Users/hloic/Documents/UTBM/HM40/HM40-TP-Fitts/data/start.png");
+    QIcon ButtonIcon2(pixmap2);
+    startBtn->setIcon(ButtonIcon2);
+    startBtn->setIconSize(startBtn->size()/15);
     startBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;");
     btnLayout->addWidget(startBtn);
 
