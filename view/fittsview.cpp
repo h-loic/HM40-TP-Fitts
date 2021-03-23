@@ -85,7 +85,7 @@ void FittsView::initWindows() {
 
     label = new QLabel;
     label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
-    label->setPixmap(QPixmap("C:/Users/hloic/Documents/UTBM/HM40/HM40-TP-Fitts/data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
+    label->setPixmap(QPixmap(":/images/formule.png").scaled(200,100,Qt::KeepAspectRatio));
     rappelLayout->addWidget(label,1,1);
 
     label = new QLabel("Choix de a et b");
@@ -146,7 +146,7 @@ void FittsView::initWindows() {
     QHBoxLayout *btnLayout = new QHBoxLayout;
     settingsLayout->addLayout(btnLayout);
     leaveBtn = new QPushButton("Quitter");
-    QPixmap pixmap("C:/Users/hloic/Documents/UTBM/HM40/HM40-TP-Fitts/data/quit.png");
+    QPixmap pixmap(":/images/quit.png");
     QIcon ButtonIcon(pixmap);
     leaveBtn->setIcon(ButtonIcon);
     leaveBtn->setIconSize(leaveBtn->size()/15);
@@ -154,7 +154,7 @@ void FittsView::initWindows() {
     btnLayout->addWidget(leaveBtn);
 
     startBtn = new QPushButton("Démarrer");
-    QPixmap pixmap2("C:/Users/hloic/Documents/UTBM/HM40/HM40-TP-Fitts/data/start.png");
+    QPixmap pixmap2(":/images/start.png");
     QIcon ButtonIcon2(pixmap2);
     startBtn->setIcon(ButtonIcon2);
     startBtn->setIconSize(startBtn->size()/15);
