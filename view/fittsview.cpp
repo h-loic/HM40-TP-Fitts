@@ -180,9 +180,11 @@ void FittsView::initWindows() {
     testLayout->addLayout(btnLayout);
 
     backBtn = new QPushButton("Retour");
+    backBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2980B9;text-align:center;");
     btnLayout->addWidget(backBtn);
 
     resultBtn = new QPushButton("Résultats");
+    resultBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2980B9;text-align:center;");
     btnLayout->addWidget(resultBtn);
     resultBtn->setEnabled(false);
 
@@ -225,9 +227,11 @@ void FittsView::initWindows() {
     resultLayout->addLayout(btnLayout);
 
     resultLeaveBtn = new QPushButton("Quitter");
+    resultLeaveBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E53935;text-align:center;");
     btnLayout->addWidget(resultLeaveBtn);
 
     restartBtn = new QPushButton("Recommencer");
+    restartBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2ECC71;text-align:center;");
     btnLayout->addWidget(restartBtn);
 }
 
