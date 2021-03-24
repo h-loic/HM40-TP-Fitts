@@ -207,27 +207,36 @@ void FittsView::initWindows() {
     resultLayout->addWidget(plot);
 
     QGroupBox *resultBox =  new QGroupBox("Stats");
+    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     resultLayout->addWidget(resultBox);
     QGridLayout *resultBoxLayout = new QGridLayout(resultBox);
 
     label = new QLabel("Ecart-Type : ");
+    label->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(label,0,0);
     ecartType = new QLabel;
+    ecartType->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(ecartType,0,1);
 
     label = new QLabel("Erreur-Type : ");
+    label->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(label,1,0);
     erreurType = new QLabel;
+    erreurType->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(erreurType,1,1);
 
     label = new QLabel("Différence moyenne : ");
+    label->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(label,0,2);
     diffMoy = new QLabel;
+    diffMoy->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(diffMoy,0,3);
 
     label = new QLabel("Intervalle de confiance à 95% : ");
+    label->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(label,1,2);
     itc95 = new QLabel;
+    itc95->setStyleSheet("background-color:white");
     resultBoxLayout->addWidget(itc95,1,3);
 
     resultBoxLayout->setColumnStretch(1,10);
