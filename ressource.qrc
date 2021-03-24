@@ -3,5 +3,8 @@
         <file>formule.png</file>
         <file>quit.png</file>
         <file>start.png</file>
+        <file>resultat.png</file>
+        <file>retour.png</file>
+        <file>restart.png</file>
     </qresource>
 </RCC>
