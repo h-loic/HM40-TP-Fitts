@@ -75,7 +75,7 @@ void FittsView::initWindows() {
 
 
     QGroupBox *rappelBox = new QGroupBox("Rappel");
-    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:30px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(rappelBox);
     QGridLayout *rappelLayout = new QGridLayout(rappelBox);
 
@@ -83,7 +83,7 @@ void FittsView::initWindows() {
     label->setStyleSheet("background-color:white");
     label->setStyleSheet("background-color:white");
     QFont font = label->font();
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(true);
     label->setFont(font);
     rappelLayout->addWidget(label,1,0);
@@ -99,13 +99,13 @@ void FittsView::initWindows() {
 
     label = new QLabel("Variable a ");
     label->setStyleSheet("background-color:white");
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(false);
     label->setFont(font);
     rappelLayout->addWidget(label,3,0);
     label = new QLabel("Variable b ");
     label->setStyleSheet("background-color:white");
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(false);
     label->setFont(font);
     rappelLayout->addWidget(label,4,0);
@@ -121,26 +121,26 @@ void FittsView::initWindows() {
     bValue->setStyleSheet("background-color:white;padding : 1em;font:13px");
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
-    configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:30px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
 
     label = new QLabel("Nombre de cibles:");
     label->setStyleSheet("background-color:white");
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(false);
     label->setFont(font);
 
 
     configLayout->addWidget(label,1,0);
     label = new QLabel("Taille minimum cible:");
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(false);
     label->setFont(font);
     label->setStyleSheet("background-color:white");
     configLayout->addWidget(label,2,0);
     label = new QLabel("Taille maximal cible:");
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(false);
     label->setFont(font);
     label->setStyleSheet("background-color:white");
@@ -193,7 +193,7 @@ void FittsView::initWindows() {
 
     testLabel = new QLabel;
     testLayout->addWidget(testLabel);
-    font.setPointSize(20);
+    font.setPointSize(17);
     font.setBold(false);
     testLabel->setFont(font);
 
