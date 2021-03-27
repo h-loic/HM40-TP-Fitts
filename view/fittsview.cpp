@@ -236,7 +236,14 @@ void FittsView::initWindows() {
     QVBoxLayout *resultLayout = new QVBoxLayout(resultWidget);
 
     plot = new QChartView;
+
+    // GRAPHIQUE 2
+    graph2 = new QChartView;
+
+
     resultLayout->addWidget(plot);
+
+    resultLayout->addWidget(graph2);
 
     QGroupBox *resultBox =  new QGroupBox("Stats");
     resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 20px;font:20px;} QGroupBox::title{font:12px;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");

@@ -58,6 +58,7 @@ private:
     QLabel *itc95;
 
     QChartView *plot;
+    QChartView *graph2;
 
     friend FittsController;
 };
