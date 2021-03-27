@@ -82,6 +82,10 @@ void FittsView::initWindows() {
     label = new QLabel("Formule utilisée:");
     label->setStyleSheet("background-color:white");
     label->setStyleSheet("background-color:white");
+    QFont font = label->font();
+    font.setPointSize(20);
+    font.setBold(true);
+    label->setFont(font);
     rappelLayout->addWidget(label,1,0);
 
     label = new QLabel;
@@ -90,25 +94,31 @@ void FittsView::initWindows() {
     rappelLayout->addWidget(label,1,1);
 
     label = new QLabel("Choix de a et b");
-    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
+    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white;font:16px");
     rappelLayout->addWidget(label,2,1);
 
     label = new QLabel("Variable a ");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(20);
+    font.setBold(false);
+    label->setFont(font);
     rappelLayout->addWidget(label,3,0);
     label = new QLabel("Variable b ");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(20);
+    font.setBold(false);
+    label->setFont(font);
     rappelLayout->addWidget(label,4,0);
 
     aValue = new QDoubleSpinBox;
     aValue->setValue(this->fittsModel->a);
     rappelLayout->addWidget(aValue,3,1);
-    aValue->setStyleSheet("background-color:white;padding : 1em");
+    aValue->setStyleSheet("background-color:white;padding : 1em;font:13px");
 
     bValue = new QDoubleSpinBox;
     bValue->setValue(this->fittsModel->b);
     rappelLayout->addWidget(bValue,4,1);
-    bValue->setStyleSheet("background-color:white;padding : 1em");
+    bValue->setStyleSheet("background-color:white;padding : 1em;font:13px");
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
     configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
@@ -117,30 +127,41 @@ void FittsView::initWindows() {
 
     label = new QLabel("Nombre de cibles:");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(20);
+    font.setBold(false);
+    label->setFont(font);
+
+
     configLayout->addWidget(label,1,0);
     label = new QLabel("Taille minimum cible:");
+    font.setPointSize(20);
+    font.setBold(false);
+    label->setFont(font);
     label->setStyleSheet("background-color:white");
     configLayout->addWidget(label,2,0);
     label = new QLabel("Taille maximal cible:");
+    font.setPointSize(20);
+    font.setBold(false);
+    label->setFont(font);
     label->setStyleSheet("background-color:white");
     configLayout->addWidget(label,3,0);
 
     nbCible = new QSpinBox;
     nbCible->setValue(this->fittsModel->nbCible);
     nbCible->setMaximum(100);
-    nbCible->setStyleSheet("background-color:white;padding : 1em");
+    nbCible->setStyleSheet("background-color:white;padding : 1em;font:13px");
     configLayout->addWidget(nbCible,1,1);
 
     minSize = new QSpinBox;
     minSize->setMaximum(1000);
     minSize->setValue(this->fittsModel->minSize);
-    minSize->setStyleSheet("background-color:white;padding : 1em");
+    minSize->setStyleSheet("background-color:white;padding : 1em;font:13px");
     configLayout->addWidget(minSize,2,1);
 
     maxSize = new QSpinBox;
     maxSize->setMaximum(1000);
     maxSize->setValue(this->fittsModel->maxSize);
-    maxSize->setStyleSheet("background-color:white;padding : 1em");
+    maxSize->setStyleSheet("background-color:white;padding : 1em;font:13px");
     configLayout->addWidget(maxSize,3,1);
 
 
@@ -172,6 +193,9 @@ void FittsView::initWindows() {
 
     testLabel = new QLabel;
     testLayout->addWidget(testLabel);
+    font.setPointSize(20);
+    font.setBold(false);
+    testLabel->setFont(font);
 
     graphicView = new GraphicWidget;
     testLayout->addWidget(graphicView);
@@ -194,7 +218,7 @@ void FittsView::initWindows() {
     QIcon ButtonIconRetour(pixmapRetour);
     backBtn->setIcon(ButtonIconRetour);
     backBtn->setIconSize(backBtn->size()/15);
-    backBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2980B9;text-align:center;");
+    backBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E8E8E8;text-align:center;");
     btnLayout->addWidget(backBtn);
 
     resultBtn = new QPushButton("Résultats");
@@ -215,36 +239,51 @@ void FittsView::initWindows() {
     resultLayout->addWidget(plot);
 
     QGroupBox *resultBox =  new QGroupBox("Stats");
-    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font-size:5em;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font:13px;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    font.setPointSize(30);
+    font.setBold(true);
+    label->setFont(font);
     resultLayout->addWidget(resultBox);
     QGridLayout *resultBoxLayout = new QGridLayout(resultBox);
 
     label = new QLabel("Ecart-Type : ");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(10);
+    font.setBold(true);
+    label->setFont(font);
     resultBoxLayout->addWidget(label,0,0);
     ecartType = new QLabel;
-    ecartType->setStyleSheet("background-color:white");
+    ecartType->setStyleSheet("background-color:white;font:13px");
     resultBoxLayout->addWidget(ecartType,0,1);
 
     label = new QLabel("Erreur-Type : ");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(10);
+    font.setBold(true);
+    label->setFont(font);
     resultBoxLayout->addWidget(label,1,0);
     erreurType = new QLabel;
-    erreurType->setStyleSheet("background-color:white");
+    erreurType->setStyleSheet("background-color:white;font:13px");
     resultBoxLayout->addWidget(erreurType,1,1);
 
     label = new QLabel("Différence moyenne : ");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(10);
+    font.setBold(true);
+    label->setFont(font);
     resultBoxLayout->addWidget(label,0,2);
     diffMoy = new QLabel;
-    diffMoy->setStyleSheet("background-color:white");
+    diffMoy->setStyleSheet("background-color:white;font:13px");
     resultBoxLayout->addWidget(diffMoy,0,3);
 
     label = new QLabel("Intervalle de confiance à 95% : ");
     label->setStyleSheet("background-color:white");
+    font.setPointSize(10);
+    font.setBold(true);
+    label->setFont(font);
     resultBoxLayout->addWidget(label,1,2);
     itc95 = new QLabel;
-    itc95->setStyleSheet("background-color:white");
+    itc95->setStyleSheet("background-color:white;font:13px");
     resultBoxLayout->addWidget(itc95,1,3);
 
     resultBoxLayout->setColumnStretch(1,10);
