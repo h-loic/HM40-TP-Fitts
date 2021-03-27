@@ -70,7 +70,7 @@ void FittsView::initWindows() {
     label = new QLabel("Programme pour vérifier la loi Fitts");
     label->setStyleSheet("color:white");
     label->setAlignment(Qt::AlignCenter);
-    label->setFont(QFont("Arial",20));
+    label->setFont(QFont("Arial",40));
     settingsLayout->addWidget(label);
 
 
@@ -239,7 +239,7 @@ void FittsView::initWindows() {
     resultLayout->addWidget(plot);
 
     QGroupBox *resultBox =  new QGroupBox("Stats");
-    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 16px;} QGroupBox::title{font:13px;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 20px;font:20px;} QGroupBox::title{font:12px;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     font.setPointSize(30);
     font.setBold(true);
     label->setFont(font);
