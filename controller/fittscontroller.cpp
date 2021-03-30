@@ -200,7 +200,7 @@ void FittsController::calculateResult() {
     QChart *chart2 = new QChart;
     this->fittsView->graph2->setChart(chart2);
     this->fittsView->graph2->setRenderHint(QPainter::Antialiasing);
-    chart2->setTitle("Résultats loi Fitts");
+    chart2->setTitle("Résultats en fonction de la distance");
     chart2->setAnimationOptions(QChart::AllAnimations);
     chart2->createDefaultAxes();
     chart2->legend()->setVisible(true);
@@ -209,7 +209,7 @@ void FittsController::calculateResult() {
     QLineSeries *expSeries2 = new QLineSeries;
     expSeries2->setName("Courbe expérimentale");
     QLineSeries *fittsSeries2 = new QLineSeries;
-    fittsSeries2->setName("Courbe théorique");
+    fittsSeries2->setName("log(2D/L)");
     QCategoryAxis *axis2 = new QCategoryAxis;
 
     QList<double> fittsValues2;
@@ -220,7 +220,7 @@ void FittsController::calculateResult() {
         double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
 
         // On multiplie par 100 pour être en ms
-        double value = (this->fittsModel->a * 1000) + ((this->fittsModel->b * 1000) * log2((D / this->fittsModel->cercleSize[i]) + 1));
+        double value =log2(((2*D) / this->fittsModel->cercleSize[i]));
         fittsValues2.append(value);
         fittsSeries2->append(i,value);
 

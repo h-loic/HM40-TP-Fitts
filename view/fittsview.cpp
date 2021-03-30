@@ -70,12 +70,12 @@ void FittsView::initWindows() {
     label = new QLabel("Programme pour vérifier la loi Fitts");
     label->setStyleSheet("color:white");
     label->setAlignment(Qt::AlignCenter);
-    label->setFont(QFont("Arial",40));
+    label->setFont(QFont("Times",30));
     settingsLayout->addWidget(label);
 
 
     QGroupBox *rappelBox = new QGroupBox("Rappel");
-    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:30px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:20px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(rappelBox);
     QGridLayout *rappelLayout = new QGridLayout(rappelBox);
 
@@ -83,7 +83,7 @@ void FittsView::initWindows() {
     label->setStyleSheet("background-color:white");
     label->setStyleSheet("background-color:white");
     QFont font = label->font();
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(true);
     label->setFont(font);
     rappelLayout->addWidget(label,1,0);
@@ -99,13 +99,13 @@ void FittsView::initWindows() {
 
     label = new QLabel("Variable a ");
     label->setStyleSheet("background-color:white");
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(false);
     label->setFont(font);
     rappelLayout->addWidget(label,3,0);
     label = new QLabel("Variable b ");
     label->setStyleSheet("background-color:white");
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(false);
     label->setFont(font);
     rappelLayout->addWidget(label,4,0);
@@ -121,26 +121,26 @@ void FittsView::initWindows() {
     bValue->setStyleSheet("background-color:white;padding : 1em;font:13px");
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
-    configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:30px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:20px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
 
     label = new QLabel("Nombre de cibles:");
     label->setStyleSheet("background-color:white");
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(false);
     label->setFont(font);
 
 
     configLayout->addWidget(label,1,0);
     label = new QLabel("Taille minimum cible:");
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(false);
     label->setFont(font);
     label->setStyleSheet("background-color:white");
     configLayout->addWidget(label,2,0);
     label = new QLabel("Taille maximal cible:");
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(false);
     label->setFont(font);
     label->setStyleSheet("background-color:white");
@@ -186,14 +186,18 @@ void FittsView::initWindows() {
 
     // Test part
     QWidget *testWidget = new QWidget;
-    testWidget->setStyleSheet("background-color:white");
+    testWidget->setStyleSheet("background-color:white;");
     mainStack->addWidget(testWidget);
 
     QVBoxLayout *testLayout = new QVBoxLayout(testWidget);
 
+    label = new QLabel("Cliquez sur les cibles qui apparaissent en <font color='red'><strong>rouge</strong></font>");
+    label->setStyleSheet("font-size:30px;");
+    testLayout->addWidget(label);
+
     testLabel = new QLabel;
     testLayout->addWidget(testLabel);
-    font.setPointSize(17);
+    font.setPointSize(12);
     font.setBold(false);
     testLabel->setFont(font);
 
@@ -207,9 +211,6 @@ void FittsView::initWindows() {
     graphicView->setScene(scene);
     scene->setSceneRect(0,0,graphicView->width(),300);
 
-    label = new QLabel("Cliquez sur les cibles qui apparaissent en <font color='red'><strong>rouge</strong></font>");
-    testLayout->addWidget(label);
-
     btnLayout = new QHBoxLayout;
     testLayout->addLayout(btnLayout);
 
@@ -218,7 +219,7 @@ void FittsView::initWindows() {
     QIcon ButtonIconRetour(pixmapRetour);
     backBtn->setIcon(ButtonIconRetour);
     backBtn->setIconSize(backBtn->size()/15);
-    backBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#E8E8E8;text-align:center;");
+    backBtn->setStyleSheet("font-size: 30px;display:inline-block;padding:0.7em 1.2em;margin:0 0.3em 0.3em 0;border-radius:0.2em;box-sizing: border-box;text-decoration:none;font-family:'Roboto',sans-serif;font-weight:300;color:#FFFFFF;background-color:#2980B9;text-align:center;");
     btnLayout->addWidget(backBtn);
 
     resultBtn = new QPushButton("Résultats");
