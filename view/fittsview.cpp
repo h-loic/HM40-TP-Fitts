@@ -246,7 +246,7 @@ void FittsView::initWindows() {
     resultLayout->addLayout(chartLayout);
 
     QGroupBox *resultBox =  new QGroupBox("Stats");
-    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 20px;font:20px;} QGroupBox::title{font:12px;subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
+    resultBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:20px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     font.setPointSize(30);
     font.setBold(true);
     label->setFont(font);
