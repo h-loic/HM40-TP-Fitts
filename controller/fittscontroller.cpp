@@ -195,7 +195,48 @@ void FittsController::calculateResult() {
     axisY->setTitleText("temps (en ms)");
     chart->setAxisY(axisY,expSeries);
 
+    // CHART 2
 
+    QChart *chart2 = new QChart;
+    this->fittsView->graph2->setChart(chart2);
+    this->fittsView->graph2->setRenderHint(QPainter::Antialiasing);
+    chart2->setTitle("Résultats loi Fitts");
+    chart2->setAnimationOptions(QChart::AllAnimations);
+    chart2->createDefaultAxes();
+    chart2->legend()->setVisible(true);
+    chart2->legend()->setAlignment(Qt::AlignBottom);
+
+    QLineSeries *expSeries2 = new QLineSeries;
+    expSeries2->setName("Courbe expérimentale");
+    QLineSeries *fittsSeries2 = new QLineSeries;
+    fittsSeries2->setName("Courbe théorique");
+    QCategoryAxis *axis2 = new QCategoryAxis;
+
+    QList<double> fittsValues2;
+
+    for(int i = 0; i < this->fittsModel->nbCible; ++i) {
+        double T = this->fittsModel->times[i];
+        expSeries2->append(i,T);
+        double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
+
+        // On multiplie par 100 pour être en ms
+        double value = (this->fittsModel->a * 1000) + ((this->fittsModel->b * 1000) * log2((D / this->fittsModel->cercleSize[i]) + 1));
+        fittsValues2.append(value);
+        fittsSeries2->append(i,value);
+
+        axis2->append(QString::number(i + 1) + "<br />T: "+QString::number(T)+"<br />D: " + QString::number(D),i);
+    }
+    axis2->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
+
+    chart2->addSeries(expSeries2);
+    chart2->addSeries(fittsSeries2);
+
+    chart2->setAxisX(axis2,expSeries2);
+    chart2->setAxisX(axis2,fittsSeries2);
+
+    QValueAxis *axisY2 = new QValueAxis;
+    axisY2->setTitleText("temps (en ms)");
+    chart2->setAxisY(axisY2,expSeries2);
 
     // Calcul des valeurs
     // Moyennes
