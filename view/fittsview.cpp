@@ -77,33 +77,40 @@ void FittsView::initWindows() {
     QGroupBox *rappelBox = new QGroupBox("Rappel");
     rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:20px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(rappelBox);
-    QGridLayout *rappelLayout = new QGridLayout(rappelBox);
+    QVBoxLayout *rappelTotalLayout = new QVBoxLayout(rappelBox);
+    QHBoxLayout *rappelFormule = new QHBoxLayout();
+    QGridLayout *rappelLayout = new QGridLayout();
 
-    label = new QLabel("Formule utilisée:");
-    label->setStyleSheet("background-color:white");
+    label = new QLabel("Formule utilisée :");
     label->setStyleSheet("background-color:white");
     QFont font = label->font();
     font.setPointSize(12);
     font.setBold(true);
     label->setFont(font);
-    rappelLayout->addWidget(label,1,0);
+    rappelFormule->addWidget(label,0,Qt::AlignRight);
 
     label = new QLabel;
-    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white");
+    label->setStyleSheet("background-color:white");
     label->setPixmap(QPixmap(":/images/formule.png").scaled(200,100,Qt::KeepAspectRatio));
-    rappelLayout->addWidget(label,1,1);
+    rappelLayout->setColumnMinimumWidth(1,rappelBox->size().width()/1.2);
+    rappelFormule->addWidget(label,0,Qt::AlignLeft);
+    //rappelFormule->addStretch();
+
+    rappelTotalLayout->addLayout(rappelFormule);
+    rappelTotalLayout->addLayout(rappelLayout);
 
     label = new QLabel("Choix de a et b");
-    label->setStyleSheet("background-color:white");label->setStyleSheet("background-color:white;font:16px");
+    label->setStyleSheet("background-color:white");
+    label->setStyleSheet("background-color:white;font:16px");
     rappelLayout->addWidget(label,2,1);
 
-    label = new QLabel("Variable a ");
+    label = new QLabel("Variable a :");
     label->setStyleSheet("background-color:white");
     font.setPointSize(12);
     font.setBold(false);
     label->setFont(font);
     rappelLayout->addWidget(label,3,0);
-    label = new QLabel("Variable b ");
+    label = new QLabel("Variable b :");
     label->setStyleSheet("background-color:white");
     font.setPointSize(12);
     font.setBold(false);
@@ -124,6 +131,7 @@ void FittsView::initWindows() {
     configBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:20px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
     settingsLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
+    configLayout->setColumnMinimumWidth(1,configBox->size().width()/1.2);
 
     label = new QLabel("Nombre de cibles:");
     label->setStyleSheet("background-color:white");
