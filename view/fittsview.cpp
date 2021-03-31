@@ -102,7 +102,7 @@ void FittsView::initWindows() {
     label = new QLabel("Choix de a et b");
     label->setStyleSheet("background-color:white");
     label->setStyleSheet("background-color:white;font:16px");
-    rappelLayout->addWidget(label,2,1);
+    rappelLayout->addWidget(label,2,0);
 
     label = new QLabel("Variable a :");
     label->setStyleSheet("background-color:white");
