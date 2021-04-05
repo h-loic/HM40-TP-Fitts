@@ -155,8 +155,8 @@ void FittsController::initGame() {
 
 void FittsController::calculateResult() {
     QChart *chart = new QChart;
-    this->fittsView->plot->setChart(chart);
-    this->fittsView->plot->setRenderHint(QPainter::Antialiasing);
+    this->fittsView->chartFitts->setChart(chart);
+    this->fittsView->chartFitts->setRenderHint(QPainter::Antialiasing);
     chart->setTitle("Résultats loi Fitts");
     chart->setAnimationOptions(QChart::AllAnimations);
     chart->createDefaultAxes();
@@ -198,8 +198,8 @@ void FittsController::calculateResult() {
     // CHART 2
 
     QChart *chart2 = new QChart;
-    this->fittsView->graph2->setChart(chart2);
-    this->fittsView->graph2->setRenderHint(QPainter::Antialiasing);
+    this->fittsView->chartRelativeDistance->setChart(chart2);
+    this->fittsView->chartRelativeDistance->setRenderHint(QPainter::Antialiasing);
     chart2->setTitle("Résultats en fonction de la distance");
     chart2->setAnimationOptions(QChart::AllAnimations);
     chart2->createDefaultAxes();

@@ -57,8 +57,8 @@ private:
     QLabel *diffMoy;
     QLabel *itc95;
 
-    QChartView *plot;
-    QChartView *graph2;
+    QChartView *chartFitts;
+    QChartView *chartRelativeDistance;
 
     friend FittsController;
 };

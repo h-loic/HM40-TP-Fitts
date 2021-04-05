@@ -65,14 +65,15 @@ void FittsView::initWindows() {
     QVBoxLayout *settingsLayout = new QVBoxLayout(settingsWidget);
 
 
+    QLabel *labelTitreProgramme;
+
+    labelTitreProgramme = new QLabel("Programme pour vérifier la loi Fitts");
+    labelTitreProgramme->setStyleSheet("color:white");
+    labelTitreProgramme->setAlignment(Qt::AlignCenter);
+    labelTitreProgramme->setFont(QFont("Times",30));
+    settingsLayout->addWidget(labelTitreProgramme);
+
     QLabel *label;
-
-    label = new QLabel("Programme pour vérifier la loi Fitts");
-    label->setStyleSheet("color:white");
-    label->setAlignment(Qt::AlignCenter);
-    label->setFont(QFont("Times",30));
-    settingsLayout->addWidget(label);
-
 
     QGroupBox *rappelBox = new QGroupBox("Rappel");
     rappelBox->setStyleSheet("QGroupBox {background-color:white;font-weight: bold;border-radius: 4px;padding: 4px;margin-top: 40px;font-size:20px;} QGroupBox::title{subcontrol-origin: margin;subcontrol-position: top center;padding: 10px 200em 10px 200em;background-color: white;}");
@@ -246,11 +247,11 @@ void FittsView::initWindows() {
 
     QHBoxLayout *chartLayout = new QHBoxLayout();
 
-    plot = new QChartView;
-    graph2 = new QChartView;
+    chartFitts = new QChartView;
+    chartRelativeDistance = new QChartView;
 
-    chartLayout->addWidget(plot);
-    chartLayout->addWidget(graph2);
+    chartLayout->addWidget(chartFitts);
+    chartLayout->addWidget(chartRelativeDistance);
     resultLayout->addLayout(chartLayout);
 
     QGroupBox *resultBox =  new QGroupBox("Stats");
