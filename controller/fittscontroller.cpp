@@ -154,89 +154,94 @@ void FittsController::initGame() {
 }
 
 void FittsController::calculateResult() {
-    QChart *chart = new QChart;
-    this->fittsView->chartFitts->setChart(chart);
-    this->fittsView->chartFitts->setRenderHint(QPainter::Antialiasing);
-    chart->setTitle("Résultats loi Fitts");
-    chart->setAnimationOptions(QChart::AllAnimations);
-    chart->createDefaultAxes();
-    chart->legend()->setVisible(true);
-    chart->legend()->setAlignment(Qt::AlignBottom);
+        QChart *graphFitts = new QChart;
+        QChart *graphdistance = new QChart;
 
-    QLineSeries *expSeries = new QLineSeries;
-    expSeries->setName("Courbe expérimentale");
-    QLineSeries *fittsSeries = new QLineSeries;
-    fittsSeries->setName("Courbe théorique");
-    QCategoryAxis *axis = new QCategoryAxis;
+        this->fittsView->chartFitts->setChart(graphFitts);
+        this->fittsView->chartFitts->setRenderHint(QPainter::Antialiasing);
+        this->fittsView->chartRelativeDistance->setChart(graphdistance);
+        this->fittsView->chartRelativeDistance->setRenderHint(QPainter::Antialiasing);
 
-    QList<double> fittsValues;
+        graphFitts->setTitle("Résultats loi Fitts");
+        graphFitts->setAnimationOptions(QChart::AllAnimations);
+        graphFitts->createDefaultAxes();
+        graphFitts->legend()->setVisible(true);
+        graphFitts->legend()->setAlignment(Qt::AlignBottom);
 
-    for(int i = 0; i < this->fittsModel->nbCible; ++i) {
-        double T = this->fittsModel->times[i];
-        expSeries->append(i,T);
-        double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
+        QLineSeries *expSeries = new QLineSeries;
+        expSeries->setName("Courbe expérimentale");
+        QLineSeries *fittsSeries = new QLineSeries;
+        fittsSeries->setName("Courbe théorique");
+        QCategoryAxis *axis = new QCategoryAxis;
 
-        // On multiplie par 100 pour être en ms
-        double value = (this->fittsModel->a * 1000) + ((this->fittsModel->b * 1000) * log2((D / this->fittsModel->cercleSize[i]) + 1));
-        fittsValues.append(value);
-        fittsSeries->append(i,value);
+        QList<double> fittsValues;
 
-        axis->append(QString::number(i + 1) + "<br />T: "+QString::number(T)+"<br />D: " + QString::number(D),i);
-    }
-    axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
 
-    chart->addSeries(expSeries);
-    chart->addSeries(fittsSeries);
+        QLineSeries *expSeries2 = new QLineSeries;
+        expSeries2->setName("Données expérimentales");
+        QLineSeries *fittsSeries2 = new QLineSeries;
+        fittsSeries2->setName("Courbe théorique");
+        QCategoryAxis *axis2 = new QCategoryAxis;
+        graphdistance->setTitle("Résultat en fonction du temps et de la distance");
+        graphdistance->setAnimationOptions(QChart::AllAnimations);
+        graphdistance->createDefaultAxes();
+        graphdistance->legend()->setVisible(true);
+        graphdistance->legend()->setAlignment(Qt::AlignBottom);
 
-    chart->setAxisX(axis,expSeries);
-    chart->setAxisX(axis,fittsSeries);
 
-    QValueAxis *axisY = new QValueAxis;
-    axisY->setTitleText("temps (en ms)");
-    chart->setAxisY(axisY,expSeries);
+        QList<double> fittsValues2;
 
-    // CHART 2
+        for(int i = 0; i < this->fittsModel->nbCible; ++i) {
+            double T = this->fittsModel->times[i];
+            expSeries->append(i,T);
+            double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
+            double L = this->fittsModel->cercleSize[i];
+            double F = log2(2*D/L);
+            expSeries2->append(F,T);
 
-    QChart *chart2 = new QChart;
-    this->fittsView->chartRelativeDistance->setChart(chart2);
-    this->fittsView->chartRelativeDistance->setRenderHint(QPainter::Antialiasing);
-    chart2->setTitle("Résultats en fonction de la distance");
-    chart2->setAnimationOptions(QChart::AllAnimations);
-    chart2->createDefaultAxes();
-    chart2->legend()->setVisible(true);
-    chart2->legend()->setAlignment(Qt::AlignBottom);
+            // On multiplie par 100 pour être en ms
+            double value = (this->fittsModel->a * 1000) + ((this->fittsModel->b * 1000) * log2((D / this->fittsModel->cercleSize[i]) + 1));
+            fittsValues.append(value);
+            fittsSeries->append(i,value);
+            fittsSeries2->append(F,value);
+            axis->append(QString::number(i + 1), i);
+            axis2->append(QString::number(F),i);
+        }
 
-    QLineSeries *expSeries2 = new QLineSeries;
-    expSeries2->setName("Courbe expérimentale");
-    QLineSeries *fittsSeries2 = new QLineSeries;
-    fittsSeries2->setName("log(2D/L)");
-    QCategoryAxis *axis2 = new QCategoryAxis;
+        QVector<QPointF> points = fittsSeries2->pointsVector();
+        std::sort(points.begin(), points.end(), [](const QPointF & p1, const QPointF & p2) {
+            return p1.y() > p2.y();
+        });
+        fittsSeries2->replace(points);
 
-    QList<double> fittsValues2;
+        QVector<QPointF> points2 = expSeries2->pointsVector();
+        std::sort(points2.begin(), points2.end(), [](const QPointF & p21, const QPointF & p22) {
+            return p21.y() > p22.y();
+        });
+        expSeries2->replace(points2);
 
-    for(int i = 0; i < this->fittsModel->nbCible; ++i) {
-        double T = this->fittsModel->times[i];
-        expSeries2->append(i,T);
-        double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
+        axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
+        graphFitts->addSeries(expSeries);
+        graphFitts->addSeries(fittsSeries);
+        graphFitts->setAxisX(axis,expSeries);
+        graphFitts->setAxisX(axis,fittsSeries);
+        QValueAxis *axisY = new QValueAxis;
+        QValueAxis *axisX = new QValueAxis;
+        axisY->setTitleText("temps (en ms)");
+        axisX->setTitleText("numéro de la cible");
+        graphFitts->setAxisY(axisY,expSeries);
 
-        // On multiplie par 100 pour être en ms
-        double value =log2(((2*D) / this->fittsModel->cercleSize[i]));
-        fittsValues2.append(value);
-        fittsSeries2->append(i,value);
-
-        axis2->append(QString::number(i + 1) + "<br />T: "+QString::number(T)+"<br />D: " + QString::number(D),i);
-    }
-    axis2->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
-
-    chart2->addSeries(expSeries2);
-    chart2->addSeries(fittsSeries2);
-
-    chart2->setAxisX(axis2,expSeries2);
-    chart2->setAxisX(axis2,fittsSeries2);
-
-    QValueAxis *axisY2 = new QValueAxis;
-    axisY2->setTitleText("temps (en ms)");
-    chart2->setAxisY(axisY2,expSeries2);
+        axis2->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
+        graphdistance->addSeries(expSeries2);
+        graphdistance->addSeries(fittsSeries2);
+        graphdistance->setAxisX(axis2,expSeries2);
+        graphdistance->setAxisX(axis2,fittsSeries2);
+        QValueAxis *axisY2 = new QValueAxis;
+        QValueAxis *axisX2 = new QValueAxis;
+        axisY2->setTitleText("temps (en ms)");
+        axisX2->setTitleText("log(2D/L)");
+        graphdistance->setAxisY(axisY2,expSeries2);
+        graphdistance->setAxisX(axisX2,expSeries2);
 
     // Calcul des valeurs
     // Moyennes
